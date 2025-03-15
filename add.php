@@ -4,14 +4,14 @@ include_once 'config.php';
 
 if(isset($_POST['submit'])){
     $name = $_POST['name'];
-    $surname = $_POST['surname'];
+    $username = $_POST['username'];
     $email = $_POST['email'];
 
-    $sql = "INSERT INTO users (name, surname, email) VALUES (:name, :surname, :email)";
+    $sql = "INSERT INTO users (name, username, email) VALUES (:name, :username, :email)";
     $sqlQuery = $conn->prepare($sql);
 
     $sqlQuery->bindParam(":name", $name);
-    $sqlQuery->bindParam(":surname", $surname);
+    $sqlQuery->bindParam(":username", $username);
     $sqlQuery->bindParam(":email", $email);
 
     $sqlQuery->execute();
@@ -32,7 +32,7 @@ if(isset($_POST['submit'])){
 
     <form action="add.php" method="POST">
         <input type="text" name="name" placeholder="Name"><br>
-        <input type="text" name="surname" placeholder="Surname"><br>
+        <input type="text" name="username" placeholder="Username"><br>
         <input type="email" name="email" placeholder="Email"><br>
         <input type="submit" name="submit" value="Add"></input>
     </form>
